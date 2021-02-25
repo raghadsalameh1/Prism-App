@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Frame xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:prism="http://prismlibrary.com"
+             prism:ViewModelLocator.AutowireViewModel="True"
+             x:Class="Prism_App.Views.AddFieldDialog">
+    <StackLayout HorizontalOptions="Center"
+                 VerticalOptions="Center">
+        <Label Text="Enter the name of the field" TextColor="Black" FontSize="Medium" />
+        <Entry  Text="{Binding FieldName}"
+                FontSize="Medium"
+                Placeholder="Field Name"/>
+        <StackLayout Orientation="Horizontal" HorizontalOptions="Center">
+            <Button BackgroundColor="DodgerBlue"
+                Text="Create"
+                TextColor="White"
+                Command="{Binding NameFieldCommand}"/>
+            <Button BackgroundColor="DodgerBlue"
+                    Text="Cancel"
+                    Command="{Binding BackCommand}"
+                TextColor="White"/>
+        </StackLayout>
+    </StackLayout>
+</Frame>

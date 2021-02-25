@@ -1,0 +1,20 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Frame xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:prism="http://prismlibrary.com"
+             prism:ViewModelLocator.AutowireViewModel="True"
+             x:Class="Prism_App.Views.DetectedCorrectlyDialog"
+             prism:DialogLayout.LayoutBounds="0.5, 0.80, -1, -1"
+             prism:DialogLayout.UseMask="False"
+             BackgroundColor="#f0fffb">
+    <StackLayout>
+        <Label Text="Is your field detected correctly?" TextColor="Black" FontSize="Medium" />
+        <StackLayout Orientation="Horizontal" HorizontalOptions="Center">
+            <Button Text="Yes"
+            Command="{Binding NameFieldCommand}"/>
+            <Button Text="Cancel"
+            Command="{Binding BackCommand}"/>
+        </StackLayout>
+       
+    </StackLayout>
+</Frame>

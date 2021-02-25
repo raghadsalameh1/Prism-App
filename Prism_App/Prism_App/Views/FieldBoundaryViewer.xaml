@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:prism="http://prismlibrary.com"
+             prism:ViewModelLocator.AutowireViewModel="True"
+             xmlns:maps="clr-namespace:Xamarin.Forms.Maps;assembly=Xamarin.Forms.Maps"
+             xmlns:mapb="clr-namespace:Prism_App.Behaviors.XFMap"
+             x:Class="Prism_App.Views.FieldBoundaryViewer">
+    <StackLayout>
+        <maps:Map x:Name="map" MapType="Hybrid">
+            <maps:Map.Behaviors>
+                <!--<mapb:MapMove MapItemSource="{Binding MapPosition}"/>-->
+                <mapb:AddPolygonBehavior Coordinates="{Binding Coordinates}"/>
+            </maps:Map.Behaviors>
+        </maps:Map>
+    </StackLayout>
+</ContentPage>

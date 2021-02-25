@@ -1,0 +1,35 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:prism="http://prismlibrary.com"
+             prism:ViewModelLocator.AutowireViewModel="True"
+             xmlns:eb="clr-namespace:Prism_App.Behaviors"
+             x:Class="Prism_App.Views.FieldListPage">
+    <ContentPage.Content>
+        <StackLayout>
+            <SearchBar  Placeholder="Search items..."
+                        CancelButtonColor="LightGray"
+                        PlaceholderColor="LightGray"
+                        TextColor="Gray"
+                        HorizontalTextAlignment="Center"
+                        FontSize="Medium">
+                <SearchBar.Behaviors>
+                    <prism:EventToCommandBehavior EventName="TextChanged" Command="{Binding TextChangedCommand}" EventArgsParameterPath="NewTextValue"/>
+                    <!--<eb:EventToCommandBehavior EventName="TextChanged" Command="{Binding TextChangedCommand}"/>-->
+                </SearchBar.Behaviors>
+            </SearchBar>
+            <ListView ItemsSource="{Binding FieldItems}">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <TextCell Text="{Binding FieldName}" TextColor="Black"/>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+                <ListView.Behaviors>
+                    <prism:EventToCommandBehavior EventName="ItemTapped" Command="{Binding ItemSelectedCommand}" EventArgsParameterPath="Item"/> 
+                    <!--<eb:EventToCommandBehavior EventName="ItemSelected" Command="{Binding ItemSelectedCommand}"/>-->
+                </ListView.Behaviors>
+            </ListView>
+        </StackLayout>
+
+    </ContentPage.Content>
+</ContentPage>

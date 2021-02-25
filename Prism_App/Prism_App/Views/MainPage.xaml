@@ -1,0 +1,52 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:maps="clr-namespace:Xamarin.Forms.Maps;assembly=Xamarin.Forms.Maps"
+             xmlns:mapb="clr-namespace:Prism_App.Behaviors.XFMap"
+             xmlns:eb="clr-namespace:Prism_App.Behaviors"
+             x:Class="Prism_App.Views.MainPage"
+             xmlns:prism="http://prismlibrary.com"
+             Title="{Binding Title}">
+
+    <StackLayout BackgroundColor="#e8e8e8">
+        <!--<maps:Map x:Name="map"
+                  MapType="Hybrid"                
+                  ItemsSource="{Binding Locations}">
+            
+        --><!-- Alternatively, set ItemTemplateSelector to MapItemTemplateSelector --><!--
+        
+            <maps:Map.ItemTemplate>
+                <DataTemplate>
+                    <maps:Pin Position="{Binding Position}"
+                              Label="dddddddddddd"/>
+                </DataTemplate>
+            </maps:Map.ItemTemplate>
+            <maps:Map.Behaviors>
+                <mapb:MapClickedBehavior Command="{Binding MapClickedCommand }"/>
+            </maps:Map.Behaviors>
+        </maps:Map>-->
+
+        <maps:Map x:Name="map" MapType="Hybrid">
+            <maps:Map.Behaviors>
+                <!--<mapb:MapMove MapItemSource="{Binding MapPosition}"/>
+                <mapb:MoveToRegionBehavior SpecificPosition="{Binding MapPosition}"/>
+                <mapb:MapBehavior ItemsSource="{Binding Items}" />
+                <prism:EventToCommandBehavior EventName="MapClicked"
+                                          Command="{Binding MapClickedCommand}" />-->
+                <!--<eb:EventToCommandBehavior EventName="MapClicked" Command="{Binding MapClickedCommand}"/>-->
+
+                <mapb:AddPinsBehavior Pins="{Binding Pins}"/>
+                <mapb:AddPolygonsBehavior Polygons="{Binding Polygons}"/>
+                <mapb:SetMapPositionBehavior LongitudeDegree="{Binding LongitudeDegree}" LatitudeDegree="{Binding LatitudeDegree}" CenterPosition="{Binding CenterPosition}"/>
+                <mapb:MapClickedBehavior Command="{Binding MapClickedCommand }"/>
+            </maps:Map.Behaviors>
+        </maps:Map>
+        <ActivityIndicator IsVisible="{Binding IsBusy}"  Color="#2196F3"  IsRunning="{Binding IsBusy}"/>
+        <!--<Button Text="ClickMe!">
+            <Button.Behaviors>
+                <prism:EventToCommandBehavior EventName="Clicked"
+                                          Command="{Binding MapClickedCommand}" />
+            </Button.Behaviors>
+        </Button>-->
+    </StackLayout>
+</ContentPage>
